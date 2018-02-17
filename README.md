@@ -1,1 +1,1 @@
-# news-group
+# News Group

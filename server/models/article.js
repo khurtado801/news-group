@@ -8,6 +8,7 @@ const articleSchema = new Schema({
     },
     author: String,
     title: String,
+    description: String,
     url: String,
     urlToImage: String,
     publishedAt: String,

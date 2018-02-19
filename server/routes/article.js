@@ -18,4 +18,16 @@ articleRouter.route("/")
         });
     })
 
+articleRouter.route("/:id")
+    .delete((req, res) => {
+        let {id} = req.params
+        ArticleModel.findByIdAndRemove(id, (err, removedArticle) => {
+            if (err) {
+                console.error(err)
+            } else {
+                res.send(removedArticle)
+            }
+        })
+    })
+
 module.exports = articleRouter;

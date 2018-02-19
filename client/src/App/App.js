@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from "react-router-dom";
-
+import {connect} from "react-redux";
+import {verifyUser} from '../redux/auth';
 import Landing from './components/Home/Landing/Landing.js';
 import Home from '../App/components/Home/Home.js';
 import Profile from '../App/components/Profile/Profile.js';
@@ -15,11 +16,17 @@ import LoginForm from './components/Login/Login.js';
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js";
 
 
+
 class App extends Component {
+    // componentDidMount = () => {
+    //     this.props.verifyUser()
+    // }
+
     render () {
         return (
             <div className="app-wrapper">
                 <Navbar/>
+                
                 <Switch>
                     <Route exact path="/" component={Signup}/>
                     <Route path="/login" component={Login}/>
@@ -31,5 +38,12 @@ class App extends Component {
         )
     }
 }
+
+
+// const mapStateToProps = (state) => {
+//     return state
+// }
+
+// export default connect(mapStateToProps, { verifyUser })(App)
 
 export default App

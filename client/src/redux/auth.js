@@ -1,5 +1,28 @@
 import axios from "axios";
 
+const userAxios = axios.create();
+userAxios
+    .interceptors
+    .request
+    .use((config) => {
+        const token = localStorage.getItem("token");
+        config.headers.Authorization = `Bearer ${token}`;
+        return config
+    });
+
+export function verifyUser() {
+    return (dispatch) => {
+        userAxios.get("/api/profile")
+            .then((response) => {
+                let { success, user } = response.data
+                dispatch(authenticate(user, success));
+            })
+            .catch((err) => {
+                console.error(err)
+            })
+    }
+}
+
 export function signup(userInfo) {
     return dispatch => {
         axios.post("/auth/signup", userInfo)

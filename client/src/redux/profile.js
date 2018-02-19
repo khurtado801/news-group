@@ -5,20 +5,20 @@ profileAxios.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${token}`;
     return config;
 })
+const userUrl = "/api/profile";
 
 const profileReducer = (prevProfile = { loading: true, data: [] }, action) => {
     switch (action.type) {
         case "EDIT_PROFILE":
-            return { loading: false, data: [...prevProfile.data, action.data] }
+            return { loading: false, data: action.data }
         default:
             return prevProfile
     }
 }
 
-export const editProfile = (user, id) => {
-    console.log(user)
+export const editProfile = (changes) => {
     return dispatch => {
-        profileAxios.put(id)
+        profileAxios.put(userUrl, changes)
         .then((response) => {
             let {data} = response
             dispatch({

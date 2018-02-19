@@ -4,21 +4,18 @@ const User = require("../models/user.js");
 
 const profileRoute = express.Router();
 
-const auth = expressJwt({secret: process.env.SECRET});
+profileRoute.route("/")
+    .get((req, res) => {
+        User.findById(req.user._id, (err, user) => {
+            if (err) return res.status(500).send({ success: false, err })
+            if (user === null) return res.status(400).send({ success: false, err: "User not found!" })
+            return res.status(200).send({ success: true, user: user.withoutPassword() })
+        })
+    });
 
-profileRoute.use(auth);
-
-profileRoute.get((req, res) => {
-    User.findById(req.user._id, (err, user) => {
-        if (err) return res.status(500).send({success: false, err})
-        if (user === null) return res.status(400).send({success: false, err: "User not found!"})
-        return res.status(200).send({success: true, user: user.withoutPassword()})
-    })
-});
-
-profileRoute.put((req, res) => {
-    User.findByIdAndUpdate(req.user._id, req.body, {new: true}, (err, user) => {
-        if(err) return res.status(500).send(err);
+profileRoute.put("/", (req, res) => {
+    User.findByIdAndUpdate(req.user._id, req.body, { new: true }, (err, user) => {
+        if (err) return res.status(500).send(err);
         return res.send(user)
     })
 })

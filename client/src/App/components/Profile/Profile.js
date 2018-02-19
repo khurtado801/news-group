@@ -14,11 +14,12 @@ class Profile extends Component {
     }
 
     handleChange = (e) => {
+        let {name, value} = e.target;
         this.setState((prevState) => {
             return {
                 inputs: {
                     ...prevState.inputs,
-                    [e.target.name]: e.target.value
+                    [name]: value
                 }
             }
         })
@@ -26,20 +27,16 @@ class Profile extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.props.auth._id, "test")
-        this.props.editProfile(this.state.inputs, this.props.auth._id)
+        this.props.editProfile(this.state.inputs)
     } 
 
     render() {
         return (
             <div>
-                <ProfileForm>
-                    {/* <h2>Username: <i>{this.props.auth.username}</i></h2>
-                    <button onClick={this.handleClick}>Edit Username</button> */}
-                    handleChange={this.handleChange.bind(this)}
-                    handleSubmit={this.handleSubmit.bind(this)}
-                    {this.state.inputs}
-                </ProfileForm>
+                <ProfileForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} inputs={this.state.inputs}>
+
+                </ProfileForm >
+                
             </div>
         )
     }

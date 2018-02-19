@@ -7,7 +7,7 @@ function ProfileForm(props) {
                 <h3>Change Username...because mine sucks-ass</h3>
                 <input
                     onChange={props.handleChange}
-                    value={props.username}
+                    value={props.inputs.username}
                     name="username"
                     type="text"
                     placeholder="Username"/>

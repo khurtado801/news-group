@@ -19,9 +19,13 @@ mongoose.connect("mongodb://localhost/news-group",  // helps get rid of deprecat
     }
 );
 
+// app.use("/api",(req,res,next)=>{
+//     console.log(req.headers);
+//     next();
+// })
 app.use("/api", expressJwt({secret: process.env.SECRET}));
+app.use("/api/profile", require("./routes/profile"));
 app.use("/api/articles", require("./routes/article"));
-// app.use("/api/profile", require("./routes/profile"));
 
 app.use("/auth", require("./routes/auth"));
 

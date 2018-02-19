@@ -19,7 +19,7 @@ class Favorites extends Component {
                 <h1>{this.props.source.id}</h1>
                 <h2>{this.props.title}</h2>
                 <h2>{this.props.author}</h2>
-                <button onClick={this.handleClick}>X</button>
+                <button onClick={this.handleClick}>delete</button>
             </div>
         );
     }

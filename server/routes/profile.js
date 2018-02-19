@@ -16,5 +16,12 @@ profileRoute.get((req, res) => {
     })
 });
 
+profileRoute.put((req, res) => {
+    User.findByIdAndUpdate(req.user._id, req.body, {new: true}, (err, user) => {
+        if(err) return res.status(500).send(err);
+        return res.send(user)
+    })
+})
+
 
 module.exports = profileRoute;

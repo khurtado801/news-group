@@ -17,6 +17,7 @@ class Landing extends Component {
 
 
     render() {
+        console.log(this.props);
         let { articles } = this.props.news.data
         let { loading } = this.props.news
         console.log(this.props.articles.data)
@@ -24,7 +25,6 @@ class Landing extends Component {
         return (
             loading ? <div>loading...</div> :
                 <div>
-
                     {this.props.news.data.articles.map((article, i) => {
                         return <Article key={i} {...article}></Article>
                     })}

@@ -24,6 +24,7 @@ class Navbar extends Component {
                 {/* <div className="nav-link"><Link to="/profile">Profile</Link></div> */}
                 {isAuthenticated ?  <div className="nav-link"><Link to="/home">Home</Link></div> : null}
                 {/* <div className="nav-link"> */}
+                {isAuthenticated ? <div className="nav-link"><Link to="/profile">Profile</Link></div> : null}
                 {isAuthenticated ?  <div className="nav-link"><button onClick={this.props.logout}>Logout</button></div> : null}
                 {/* </div> */}
             </div>

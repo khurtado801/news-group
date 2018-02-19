@@ -20,11 +20,11 @@ class App extends Component {
         return (
             <div className="app-wrapper">
                 <Navbar/>
-                
                 <Switch>
                     <Route exact path="/" component={Signup}/>
                     <Route path="/login" component={Login}/>
                     <ProtectedRoute path="/home" component={Home}/>
+                    <ProtectedRoute path="/profile" component={Profile}/>
                     {/* <Route path="/home" component = {Home}></Route> */}
                 </Switch>
             </div>

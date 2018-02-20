@@ -15,7 +15,7 @@ import LoginForm from './components/Login/Login.js';
 // import Profile from "./Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js";
 
-
+import './App.css';
 
 class App extends Component {
     componentDidMount = () => {

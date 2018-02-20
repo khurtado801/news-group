@@ -1,4 +1,19 @@
-html {
-    margin: 0;
-    background: linear-gradient(#000046, #1CB5E0);
+@font-face {
+    font-family: OldeEnglishRegular;
+    src: url(OldeEnglishRegular.ttf);
 }
+
+html {
+    font-family: OldeEnglishRegular;
+    margin: 0;
+    /* background: linear-gradient(#000046, #1CB5E0); */
+}
+
+body {
+    font-family: OldeEnglishRegular;    
+}
+
+h1 {
+    font-family: "OldeEnglishRegular"; 
+}
+

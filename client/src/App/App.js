@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import {connect} from "react-redux";
 import {verifyUser} from '../redux/auth';
 import Landing from './components/Home/Landing/Landing.js';
@@ -18,9 +18,9 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js";
 
 
 class App extends Component {
-    // componentDidMount = () => {
-    //     this.props.verifyUser()
-    // }
+    componentDidMount = () => {
+        this.props.verifyUser()
+    }
 
     render () {
         return (
@@ -40,10 +40,8 @@ class App extends Component {
 }
 
 
-// const mapStateToProps = (state) => {
-//     return state
-// }
+const mapStateToProps = (state) => {
+    return state
+}
 
-// export default connect(mapStateToProps, { verifyUser })(App)
-
-export default App
+export default withRouter(connect(mapStateToProps, { verifyUser })(App))

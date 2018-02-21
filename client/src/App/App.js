@@ -7,7 +7,7 @@ import Home from '../App/components/Home/Home.js';
 import Profile from '../App/components/Profile/Profile.js';
 import Contact from '../App/components/Contact/Contact.js';
 import Header from './components/Header/Header.js';
-import Navbar from './components/Navbar/Navbar.js';
+// import Navbar from './components/Navbar/Navbar.js';
 import Footer from './components/Footer/Footer.js';
 import Login from './components/Login/Login.js'
 import Signup from './components/Signup/Signup.js';
@@ -25,7 +25,7 @@ class App extends Component {
     render () {
         return (
             <div className="app-wrapper">
-                <Navbar/>
+                <Header/>
                 
                 <Switch>
                     <Route exact path="/" component={Signup}/>

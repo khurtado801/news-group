@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 
 import { connect } from "react-redux";
@@ -29,25 +28,31 @@ class Article extends Component {
         console.log(this.state.inputs)
         this.props.addArticle(this.state.inputs)
         
+        
     }
-
-
+    
     render() {
         
 
         return (
-            <div>
-                <h1>{this.props.source.name}</h1>
-                <h2>{this.props.author}</h2>
-                <h2>{this.props.description}</h2>
-                <h3>{this.props.userId}</h3>
-                <button onClick={this.handleClick}>+</button>
+            <div >
+                <h2 className="times">{this.props.title}</h2>
+                <h4 className="times">{this.props.author}</h4>
+                <h4 className="times">{this.props.description}</h4>
+                <a href={this.props.url} className="times">link to article</a>
+                <h4 className="times">{this.props.publishedAt}</h4>
+                <h4 className="times">{this.props.source.name}</h4>
+                
+                <button onClick={this.handleClick}>Add to Favorites</button>
+                
             </div>
         )
 
+        
+
     }
 
+    
 }
 
 export default connect(state=>state, { addArticle, getArticles })(Article)
-

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { getNews } from '../../../../redux/news';
-import {getArticles} from '../../../../redux/articles';
+import { getArticles } from '../../../../redux/articles';
 import { connect } from "react-redux"
 import Article from "./Article/Article.js"
 import Favorites from "./Favorites/Favorites.js";
+
 
 class Landing extends Component {
     constructor(props) {
@@ -24,13 +25,32 @@ class Landing extends Component {
 
         return (
             loading ? <div>loading...</div> :
-                <div>
-                    {this.props.news.data.articles.map((article, i) => {
-                        return <Article key={i} {...article}></Article>
-                    })}
-                    {this.props.articles.data.map((article, i) => {
-                        return <Favorites key ={i}{...article}></Favorites>
-                    })}
+                <div className="homeWrapper">
+                    <div className="newsClass">
+                        <h1 className="title">Top News</h1>
+                        <div className="article">
+                            {this.props.news.data.articles.map((article, i) => {
+                                return <Article key={i} {...article}></Article>
+                            })}
+                        </div>
+                    </div>
+                    <div className="divider">&nbsp;</div>
+                    <div className="favoritesClass">
+                        <h1 className="title">My Favorites</h1>
+
+                        <div className="favorite">
+
+                            {this.props.articles.data.map((article, i) => {
+                                return <Favorites key={i}{...article}></Favorites>
+                            })}
+
+
+                        </div>
+
+
+
+                    </div>
+
                 </div>
         )
     }

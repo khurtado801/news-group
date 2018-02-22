@@ -32,7 +32,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <div>
+            <div className="login-signup-form-wrapper">
                 <ProfileForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} inputs={this.state.inputs}>
 
                 </ProfileForm >

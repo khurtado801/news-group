@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import LoginForm from "./LoginForm";
 import {connect} from "react-redux";
 import {login} from "../../../redux/auth";
+import './Login.css';
+import './Landing.css';
 
 
-class LoginFormContainer extends Component {
+class Login extends Component {
     constructor() {
         super();
         this.state = {
@@ -44,12 +46,14 @@ class LoginFormContainer extends Component {
 
     render() {
         return (
-            <LoginForm
-                handleChange={this.handleChange.bind(this)}
-                handleSubmit={this.handleSubmit.bind(this)}
-                {...this.state.inputs} />
+            <div className='login-signup-form-wrapper'>
+                <LoginForm
+                    handleChange={this.handleChange.bind(this)}
+                    handleSubmit={this.handleSubmit.bind(this)}
+                    {...this.state.inputs} />
+            </div>
         )
     }
 }
 
-export default connect(null, {login})(LoginFormContainer);
+export default connect(null, {login})(Login);

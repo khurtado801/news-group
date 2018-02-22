@@ -12,7 +12,7 @@ userAxios
 
 export function verifyUser() {
     return (dispatch) => {
-        userAxios.get("/api/profile")
+        userAxios.get("/api/profile/")
             .then((response) => {
                 let { success, user } = response.data
                 dispatch(authenticate(user, success));

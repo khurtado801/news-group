@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import SignupForm from "./SignupForm";
-import {connect} from "react-redux";
-import {signup} from "../../../redux/auth";
+import { connect } from "react-redux";
+import { signup } from "../../../redux/auth";
+import "./signup.css"
 
-class SignupFormContainer extends Component {
+
+
+class Signup extends Component {
     constructor() {
         super();
         this.state = {
@@ -44,12 +47,16 @@ class SignupFormContainer extends Component {
 
     render() {
         return (
-            <SignupForm
-                handleChange={this.handleChange.bind(this)}
-                handleSubmit={this.handleSubmit.bind(this)}
-                {...this.state.inputs} />
+            <div className='login-signup-form-wrapper'>
+                <SignupForm
+                    handleChange={this.handleChange.bind(this)}
+                    handleSubmit={this.handleSubmit.bind(this)}
+                    {...this.state.inputs} />
+
+            </div>
+
         )
     }
 }
 
-export default connect(null, {signup})(SignupFormContainer);
+export default connect(null, { signup })(Signup);

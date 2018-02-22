@@ -25,7 +25,7 @@ class Navbar extends Component {
                                 {isAuthenticated ? null : <div className="nav-link"><Link to="/login">Login</Link></div>}
                             </div>
                             <div className="navbar-item">
-                                {isAuthenticated ? null : <div className="nav-link"><Link to="/">Sign Up</Link></div>}
+                                {isAuthenticated ? null : <div className="nav-link"><Link to="/signup">Sign Up</Link></div>}
                             </div>
                             <div className="navbar-item">
                                 {isAuthenticated ? <div className="nav-link"><Link to="/home">Home</Link></div> : null}

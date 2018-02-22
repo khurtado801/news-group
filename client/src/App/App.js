@@ -11,11 +11,13 @@ import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
 import Login from './components/Login/Login.js'
 import Signup from './components/Signup/Signup.js';
+import SignupForm from "./components/Signup/SignupForm.js"
 import LoginForm from './components/Login/Login.js';
 // import Profile from "./Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js";
 
 import './App.css';
+
 
 class App extends Component {
     componentDidMount = () => {
@@ -23,15 +25,31 @@ class App extends Component {
     }
 
     render () {
+        const isAuthenticated = this.props.isAuthenticated;
         return (
             <div className="app-wrapper">
                 <Header/>
                 
                 <Switch>
-                    <Route exact path="/" component={Signup}/>
-                    <Route path="/login" component={Login}/>
+                <Route exact path="/" render={(props) => {
+                    return isAuthenticated ?
+                    <Redirect to="/profile"/> :
+                    <Signup {...props} />
+                }}/>
+                 <Route path="/login" render={(props) => {
+                    return isAuthenticated ?
+                    <Redirect to="/profile"/> :
+                    <Login {...props} />
+                }}/>
+                 <Route path="/signup" render={(props) => {
+                    return isAuthenticated ?
+                    <Redirect to="/profile"/> :
+                    <Signup {...props} />
+                }}/>
+                    {/* <Route exact path="/" component={Signup}/> */}
+                    <Route path="/profile" component={Profile}/> 
                     <ProtectedRoute path="/home" component={Home}/>
-                    <ProtectedRoute path="/profile" component={Profile}/>
+                    {/* <ProtectedRoute path="/profile" component={Profile}/> */}
                     {/* <Route path="/home" component = {Home}></Route> */}
                 </Switch>
             </div>
